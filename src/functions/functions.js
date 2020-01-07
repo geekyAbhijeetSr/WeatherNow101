@@ -147,7 +147,6 @@ const dayornight = (timezone, sunrisestamp, sunsetstamp) => {
 }
 
 const weatherIcon = (dayOrNigh, weatherId) => {
-    console.log(dayOrNigh, weatherId);
 
     // thunderstorm 
     if ((weatherId >= 200 && weatherId <= 202) || (weatherId >= 230 && weatherId <= 232)) {

@@ -98,7 +98,6 @@ class App extends Component {
 
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.LocationName}&appid=${this.API_key}`)
       .then((res) => {
-        console.log('done');
 
         const data = res.data;
 
@@ -147,8 +146,8 @@ class App extends Component {
             bg: bg,
           })
 
-          console.log(">>", this.state.bg);
         })
+
       })
 
   }
