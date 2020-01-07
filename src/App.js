@@ -78,19 +78,19 @@ class App extends Component {
 
 
   getWetherOnLoad = () => {
-    let ip = null;
-    axios.get("https://api.ipify.org?format=json")
+    axios.get("https://extreme-ip-lookup.com/json/")
       .then(res => {
-        ip = res.data.ip;
+        this.setState({
+          LocationName: `${res.data.city}, ${res.data.country}`,
+        })
       })
       .then(() => {
-        axios.get(`http://ip-api.com/json/${ip}`)
-          .then(res => {
-            this.setState({
-              LocationName: `${res.data.city}, ${res.data.country}`
-            })
-          })
-          .then(() => this.getWeather())
+          this.getWeather()
+      })
+      .catch(() => {
+        this.setState({
+          LocationName: `London, Uk`,
+        })
       })
 
   }
