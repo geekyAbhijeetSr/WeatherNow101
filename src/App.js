@@ -87,7 +87,7 @@ class App extends Component {
       })
       .then(() => {
         this.getWeather();
-        alert('calling getWeather in then');
+        alert('calling getWeather in then for ' + this.state.LocationName);
       })
       .catch(() => {
         this.getWeather()
