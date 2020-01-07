@@ -88,6 +88,9 @@ class App extends Component {
       .then(() => {
           this.getWeather()
       })
+      .then(() => {
+        this.getWeather()
+      })
 
   }
   getWeather = () => {
