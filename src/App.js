@@ -45,7 +45,7 @@ class App extends Component {
       bg: "clearskyday",
     }
 
-    this.getWetherOnLoad();
+    
   }
 
   changeOnClick = () => {
@@ -169,7 +169,9 @@ class App extends Component {
 
   }
 
-
+  componentDidMount() {
+    this.getWetherOnLoad()
+  }
 
   render() {
     dayornight(this.state.timezone, this.state.sunrise, this.state.sunset);
