@@ -84,7 +84,7 @@ class App extends Component {
         ip = res.data.ip;
       })
       .then(() => {
-        axios.get(`http://ip-api.com/json/${ip}`)
+        axios.get(`https://ip-api.com/json/${ip}`)
           .then(res => {
             this.setState({
               LocationName: `${res.data.city}, ${res.data.country}`
@@ -96,7 +96,7 @@ class App extends Component {
   }
   getWeather = () => {
 
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.LocationName}&appid=${this.API_key}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.LocationName}&appid=${this.API_key}`)
       .then((res) => {
         console.log('done');
 
