@@ -14,7 +14,6 @@ class App extends Component {
     this.API_key = 'eb06bab0e46b55eabeb33e864b04302f';
     this.state = {
       LocationName: 'london, uk',
-      LocationName: '',
       id: null,
       main: null,
       description: null,
@@ -180,6 +179,10 @@ class App extends Component {
         width: `100%`,
         height: `100vh`,
         background: `url(bg/${bg}.jpg) center center / cover no-repeat fixed`,
+        WebkitBackgroundSize: 'cover',
+        MozBackgroundSize: 'cover',
+        OBackgroundSize: 'cover',
+        backgroundSize: 'cover',
       }
     }
     return (
