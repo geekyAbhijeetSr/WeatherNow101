@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
     this.API_key = 'eb06bab0e46b55eabeb33e864b04302f';
     this.state = {
-      LocationName: 'london, uk',
+      LocationName: 'Delhi, India',
       id: null,
       main: null,
       description: null,
@@ -80,10 +80,13 @@ class App extends Component {
   getWetherOnLoad = () => {
     axios.get("https://extreme-ip-lookup.com/json/")
       .then(res => {
-        this.setState({
-          LocationName: `${res.data.city}, ${res.data.country}`,
-        })
-        alert('getting data from https://extreme-ip-lookup.com/json/');
+        if (res.data.city) {
+          this.setState({
+            LocationName: `${res.data.city}, ${res.data.country}`,
+          })
+        }
+
+        alert('getting data from https://extreme-ip-lookup.com/json/' + res.data.city);
       })
       .then(() => {
         this.getWeather();
