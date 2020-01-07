@@ -13,7 +13,8 @@ class App extends Component {
     super(props);
     this.API_key = 'eb06bab0e46b55eabeb33e864b04302f';
     this.state = {
-      LocationName: null,
+      LocationName: 'london, uk',
+      LocationName: '',
       id: null,
       main: null,
       description: null,
@@ -86,11 +87,6 @@ class App extends Component {
       })
       .then(() => {
           this.getWeather()
-      })
-      .catch(() => {
-        this.setState({
-          LocationName: `London, Uk`,
-        })
       })
 
   }
