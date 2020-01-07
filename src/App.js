@@ -84,7 +84,7 @@ class App extends Component {
         ip = res.data.ip;
       })
       .then(() => {
-        axios.get(`https://ip-api.com/json/${ip}`)
+        axios.get(`http://ip-api.com/json/${ip}`)
           .then(res => {
             this.setState({
               LocationName: `${res.data.city}, ${res.data.country}`
