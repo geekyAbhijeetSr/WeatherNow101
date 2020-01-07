@@ -45,7 +45,7 @@ class App extends Component {
       bg: "clearskyday",
     }
 
-    
+
   }
 
   changeOnClick = () => {
@@ -85,9 +85,9 @@ class App extends Component {
         })
       })
       .then(() => {
-          this.getWeather()
+        this.getWeather()
       })
-      .then(() => {
+      .catch(() => {
         this.getWeather()
       })
 
