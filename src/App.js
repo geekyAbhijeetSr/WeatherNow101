@@ -136,11 +136,9 @@ class App extends Component {
         var icon, bg;
         new Promise((resolve, reject) => {
           icon = weatherIcon(this.state.dayOrNight, this.state.id);
-          console.log(this.state.id);
           bg = getbg(this.state.dayOrNight, this.state.id);
           resolve("done");
         }).then(() => {
-          console.log(">>", icon, bg);
           this.setState({
             icon: icon,
             bg: bg,
