@@ -171,6 +171,9 @@ class App extends Component {
 
   }
 
+  componentDidMount() {
+  }
+
 
   render() {
     dayornight(this.state.timezone, this.state.sunrise, this.state.sunset);
