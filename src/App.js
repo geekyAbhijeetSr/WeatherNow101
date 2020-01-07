@@ -170,7 +170,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getWetherOnLoad()
+    this.getWetherOnLoad();
+    this.getWeather();
+    alert('componentDidMount');
   }
 
   render() {
