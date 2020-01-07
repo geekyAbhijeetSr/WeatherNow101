@@ -85,16 +85,12 @@ class App extends Component {
             LocationName: `${res.data.city}, ${res.data.country}`,
           })
         }
-
-        alert('getting data from https://extreme-ip-lookup.com/json/' + res.data.city);
       })
       .then(() => {
         this.getWeather();
-        alert('calling getWeather in then for ' + this.state.LocationName);
       })
       .catch(() => {
-        this.getWeather()
-        alert('calling getWeather in catch');
+        this.getWeather();
       })
 
   }
@@ -177,7 +173,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getWetherOnLoad();
-    alert('componentDidMount');
   }
 
   render() {
