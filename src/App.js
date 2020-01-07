@@ -83,12 +83,15 @@ class App extends Component {
         this.setState({
           LocationName: `${res.data.city}, ${res.data.country}`,
         })
+        alert('getting data from https://extreme-ip-lookup.com/json/');
       })
       .then(() => {
-        this.getWeather()
+        this.getWeather();
+        alert('calling getWeather in then');
       })
       .catch(() => {
         this.getWeather()
+        alert('calling getWeather in catch');
       })
 
   }
