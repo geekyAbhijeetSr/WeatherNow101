@@ -5,7 +5,7 @@
 
 > WeatherNow101 is a weather web app powered by [open weather api](https://openweathermap.org/api). You can search any location it will give the weather info, as well as it will change the background according to the weather.
 
-##### [See live here](https://weathernow101.netlify.app/)👀️ 
+##### [See live here](https://weathernow101.netlify.app/) 👀️ 
 
 ### Built with
 - [REACT](https://reactjs.org/)
