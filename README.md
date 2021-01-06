@@ -35,7 +35,7 @@ npm start
 
 ### 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Abhijeet199/CurrentWeather/issues). 
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/Abhijeet199/WeatherNow101/issues). 
 
 ### Show your support
 
