@@ -3,7 +3,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> WeatherNow101 is a weather web app powered by open weather api. You can search any location it will give the weather info, as well as it will change the background according to the weather.
+> WeatherNow101 is a weather web app powered by [open weather api](https://openweathermap.org/api). You can search any location it will give the weather info, as well as it will change the background according to the weather.
 
 ##### 🏠 [Homepage](https://weathernow101.netlify.app/)
 
