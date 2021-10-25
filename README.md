@@ -9,7 +9,6 @@
 
 ### Built with
 - [REACT](https://reactjs.org/)
-- [SASS](https://sass-lang.com/)
 
 ### API
 - [Open Weather API](https://openweathermap.org/api)
