@@ -81,7 +81,7 @@ class App extends Component {
   getWetherOnLoad = () => {
     const options = {
 			method: 'GET',
-			url: `http://api.ipstack.com/check?access_key=${process.env.REACT_APP_iplookup_key}`,
+			url: `https://ipapi.co/json/`,
 		}
 
 		axios
@@ -90,7 +90,7 @@ class App extends Component {
 				if (response.data.city) {
 					this.setState({
             LocationName: `${response.data.city},${response.data.country_name}`,
-            backupLocation: `${response.data.location.capital},${response.data.country_name}`
+            backupLocation: `${response.data.country_capital},${response.data.country_name}`
 					})
         }
 			})
