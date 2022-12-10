@@ -8,13 +8,11 @@
 .form-container {
   margin: 0;
   margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   width: 100%;
   display: flex;
   justify-content: center;
 }
-
-
 
 * {
   user-select: none;
@@ -85,7 +83,6 @@ form {
   justify-items: center;
   align-items: center;
   border-radius: 10px;
-  margin-bottom: 1rem;
 }
 
 
@@ -182,7 +179,9 @@ form {
 .main_view {
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 

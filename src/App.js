@@ -11,9 +11,10 @@ import { dayornight, weatherIcon, getbg } from './functions/functions';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.API_key = 'eb06bab0e46b55eabeb33e864b04302f';
+    this.API_key = process.env.REACT_APP_weather_api_key
     this.state = {
-      LocationName: 'Delhi, India',
+      LocationName: 'Delhi,India',
+      backupLocation: 'Delhi,India',
       id: null,
       main: null,
       description: null,
@@ -78,22 +79,29 @@ class App extends Component {
 
 
   getWetherOnLoad = () => {
-    axios.get("https://extreme-ip-lookup.com/json/")
-      .then(res => {
-        if (res.data.city) {
-          this.setState({
-            LocationName: `${res.data.city}, ${res.data.country}`,
-          })
-        }
-      })
-      .then(() => {
-        this.getWeather();
-      })
-      .catch(() => {
-        this.getWeather();
-      })
+    const options = {
+			method: 'GET',
+			url: `http://api.ipstack.com/check?access_key=${process.env.REACT_APP_iplookup_key}`,
+		}
 
+		axios
+			.request(options)
+			.then((response) => {
+				if (response.data.city) {
+					this.setState({
+            LocationName: `${response.data.city},${response.data.country_name}`,
+            backupLocation: `${response.data.location.capital},${response.data.country_name}`
+					})
+        }
+			})
+      .then(() => {
+				this.getWeather()
+			})
+			.catch(() => {
+				this.getWeather()
+			})
   }
+
   getWeather = () => {
 
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.LocationName}&appid=${this.API_key}`)
@@ -128,7 +136,6 @@ class App extends Component {
         return (data);
       }).then((data) => {
         let dOrN = dayornight(data.timezone, data.sys.sunrise, data.sys.sunset);
-
         this.setState({
           dayOrNight: dOrN
         })
@@ -146,6 +153,62 @@ class App extends Component {
 
         })
 
+      }).catch(() => { 
+        axios
+					.get(
+						`https://api.openweathermap.org/data/2.5/weather?q=${this.state.backupLocation}&appid=${this.API_key}`
+					)
+					.then(res => {
+						const data = res.data
+
+						this.setState({
+							id: data.weather[0].id,
+							main: data.weather[0].main,
+							description: data.weather[0].description,
+							base: data.base,
+							temp: data.main.temp,
+							feels_like: data.main.feels_like,
+							temp_min: data.main.temp_min,
+							temp_max: data.main.temp_max,
+							pressure: data.main.pressure,
+							humidity: data.main.humidity,
+							visibility: data.visibility,
+							speed: data.wind.speed,
+							deg: data.wind.deg,
+							cloudsAll: data.clouds.all,
+							country: data.sys.country,
+							sunrise: data.sys.sunrise,
+							sunset: data.sys.sunset,
+							timezone: data.timezone,
+							city: data.name,
+							cityId: data.id,
+						})
+
+						return data
+					})
+					.then(data => {
+						let dOrN = dayornight(
+							data.timezone,
+							data.sys.sunrise,
+							data.sys.sunset
+						)
+						this.setState({
+							dayOrNight: dOrN,
+						})
+					})
+					.then(() => {
+						var icon, bg
+						new Promise((resolve, reject) => {
+							icon = weatherIcon(this.state.dayOrNight, this.state.id)
+							bg = getbg(this.state.dayOrNight, this.state.id)
+							resolve('done')
+						}).then(() => {
+							this.setState({
+								icon: icon,
+								bg: bg,
+							})
+						})
+					})
       })
 
   }
@@ -196,14 +259,11 @@ class App extends Component {
           <div className="main_view">
             <MainWeather props={this.state} changeOnClick={this.changeOnClick} refreshOnClick={this.refreshOnClick} />
             <OtherDetails props={this.state} />
-
           </div>
           <div className="main_view">
             <WindDetails props={this.state} />
             <Sun props={this.state} />
           </div>
-
-
         </div>
       </div>
 
